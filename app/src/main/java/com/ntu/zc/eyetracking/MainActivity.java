@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     JavaCameraView javaCameraView;
     Mat mRGBa, imgGray, imgCanny;
 
+    static {
+        System.loadLibrary("MyOpencvLibs");
+    }
+
     BaseLoaderCallback mLoaderCallBack = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -98,9 +102,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRGBa=inputFrame.rgba();
-        Imgproc.cvtColor(mRGBa, imgGray, Imgproc.COLOR_RGB2GRAY);
-        Imgproc.Canny(imgGray, imgCanny, 50, 130);
+        //Imgproc.cvtColor(mRGBa, imgGray, Imgproc.COLOR_RGB2GRAY);
+        //Imgproc.Canny(imgGray, imgCanny, 50, 130);
 
-        return imgCanny;
+        OpencvNativeClass.convertGray(mRGBa.getNativeObjAddr(), imgGray.getNativeObjAddr());
+
+        return imgGray;
     }
 }
