@@ -12,15 +12,15 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static String TAG="MainActivity";
     JavaCameraView javaCameraView;
-    Mat mRGBa, imgGray, imgCanny;
+    Mat mRGBa, mGray;
 
     static {
+        System.loadLibrary("opencv_java3");
         System.loadLibrary("MyOpencvLibs");
     }
 
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
                 }
 
             }
-            super.onManagerConnected(status);
         }
     };
 
@@ -85,13 +84,10 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         }
     }
 
-
     @Override
     public void onCameraViewStarted(int width, int height) {
         mRGBa = new Mat(height, width, CvType.CV_8UC4);
-        imgGray = new Mat(height, width, CvType.CV_8UC1);
-        imgCanny = new Mat(height, width, CvType.CV_8UC1);
-
+        mGray = new Mat(height, width, CvType.CV_8UC1);
     }
 
     @Override
@@ -102,11 +98,9 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRGBa=inputFrame.rgba();
-        //Imgproc.cvtColor(mRGBa, imgGray, Imgproc.COLOR_RGB2GRAY);
-        //Imgproc.Canny(imgGray, imgCanny, 50, 130);
 
-        OpencvNativeClass.convertGray(mRGBa.getNativeObjAddr(), imgGray.getNativeObjAddr());
+        NativeClass.convertGray(mRGBa.getNativeObjAddr(), mGray.getNativeObjAddr());
 
-        return imgGray;
+        return mGray;
     }
 }

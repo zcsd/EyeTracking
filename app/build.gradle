@@ -11,7 +11,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     sourceSets.main {
         jni.srcDirs = [] //disable automatic ndk-build call
     }
@@ -34,7 +33,6 @@ android {
     }
     productFlavors {
     }
-    sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jniLibs/'] } }
 }
 
 dependencies {

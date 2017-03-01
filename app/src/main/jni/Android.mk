@@ -9,7 +9,7 @@ OPENCV_INSTALL_MODULES:=on
 OPENCV_LIB_TYPE:=SHARED
 include ${OPENCVROOT}/sdk/native/jni/OpenCV.mk
 
-LOCAL_SRC_FILES := com_ntu_zc_eyetracking_OpencvNativeClass.cpp
+LOCAL_SRC_FILES := com_ntu_zc_eyetracking_NativeClass.cpp
 
 LOCAL_LDLIBS += -llog
 LOCAL_MODULE := MyOpencvLibs
