@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public void onCameraViewStopped() {
         mRGBa.release();
+        mGray.release();
     }
 
     @Override
