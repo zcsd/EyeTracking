@@ -20,4 +20,3 @@ JNIEXPORT jint JNICALL Java_com_ntu_zc_eyetracking_NativeClass_convertGray
       return 0;
   }
 
-

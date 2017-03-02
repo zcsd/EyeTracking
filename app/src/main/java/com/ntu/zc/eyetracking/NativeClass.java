@@ -6,4 +6,5 @@ package com.ntu.zc.eyetracking;
 
 public class NativeClass {
     public native static int convertGray(long matAddrRgba, long matAddrGray);
+
 }

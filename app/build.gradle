@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     sourceSets.main {
         jni.srcDirs = [] //disable automatic ndk-build call
     }
@@ -25,6 +26,7 @@ android {
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -42,5 +44,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
-    compile project(':openCVLibrary310')
+    compile project(':openCVLibrary320')
 }
