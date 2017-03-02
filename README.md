@@ -15,3 +15,7 @@ After downloading and Loading Project in Android Studio, some directory need to 
     
     1. app/src/main/jni/Android.mk , change to your opencv path for OPENCVROOT (OpenCV SDK source folder)
     2. app/build.gradle , change to your NDK path for commandLine (ndk-build folder)
+
+screenshot for sample canny detector(using both Java and C++) running in BT-200 Glass
+
+![alt tag](https://github.com/zcsd/EyeTracking/blob/master/app%20running.png)
